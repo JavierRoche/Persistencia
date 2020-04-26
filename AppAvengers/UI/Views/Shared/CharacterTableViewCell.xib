@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="W0K-7y-6cM" customClass="CharacterTableViewCell" customModule="AppAvengers" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W0K-7y-6cM" id="faP-PN-9uq">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M5R-9o-gO4">
+                        <rect key="frame" x="102.5" y="12" width="209" height="131"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="131" id="gIH-rx-cQz"/>
+                            <constraint firstAttribute="width" constant="209" id="zFo-9o-rZI"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FY9-wM-cUb">
+                        <rect key="frame" x="185.5" y="151" width="43" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="mAz-og-KYh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tTU-qk-7h7">
+                        <rect key="frame" x="158" y="177" width="98" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="98" id="6Ac-yT-Gx0"/>
+                            <constraint firstAttribute="height" constant="17" id="8pX-nH-CID"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" red="0.80412132289794147" green="0.89919776055926681" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="M5R-9o-gO4" firstAttribute="centerX" secondItem="faP-PN-9uq" secondAttribute="centerX" id="4I5-2e-XIq"/>
+                    <constraint firstItem="tTU-qk-7h7" firstAttribute="centerX" secondItem="faP-PN-9uq" secondAttribute="centerX" id="G2a-mO-DFM"/>
+                    <constraint firstItem="FY9-wM-cUb" firstAttribute="top" secondItem="M5R-9o-gO4" secondAttribute="bottom" constant="8" id="Tn4-S0-TJe"/>
+                    <constraint firstItem="FY9-wM-cUb" firstAttribute="centerX" secondItem="faP-PN-9uq" secondAttribute="centerX" id="Znv-hb-3eW"/>
+                    <constraint firstItem="tTU-qk-7h7" firstAttribute="top" secondItem="FY9-wM-cUb" secondAttribute="bottom" constant="6" id="vUQ-Da-uKH"/>
+                    <constraint firstItem="M5R-9o-gO4" firstAttribute="top" secondItem="faP-PN-9uq" secondAttribute="top" constant="12" id="zSC-Id-plH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="charAvatar" destination="M5R-9o-gO4" id="tYv-K9-r21"/>
+                <outlet property="charName" destination="FY9-wM-cUb" id="px8-at-x0H"/>
+                <outlet property="charPower" destination="tTU-qk-7h7" id="5Q0-Sl-CbD"/>
+            </connections>
+            <point key="canvasLocation" x="160.86956521739131" y="129.24107142857142"/>
+        </tableViewCell>
+    </objects>
+</document>
