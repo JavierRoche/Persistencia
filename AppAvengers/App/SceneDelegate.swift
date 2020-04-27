@@ -15,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         /// Acceso al User Defaults
         let userDefaultsScreen: UserDefaultsProvider = UserDefaultsProvider()
-        let userView: String? = userDefaultsScreen.load()
+        let _: String? = userDefaultsScreen.load()
+        
         /// Creamos ViewController para cada tab de la app
         let heroesViewController: HeroesViewController = HeroesViewController()
         let battlesViewController: BattlesViewController = BattlesViewController()
@@ -77,8 +78,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-        
-        
     }
 
 

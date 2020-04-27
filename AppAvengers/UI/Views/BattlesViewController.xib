@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BattlesViewController" customModule="AppAvengers" customModuleProvider="target">
             <connections>
+                <outlet property="table" destination="5nZ-hy-yxA" id="iCE-az-nyo"/>
                 <outlet property="view" destination="iN0-l3-epB" id="t2d-Uk-yHP"/>
             </connections>
         </placeholder>
@@ -16,9 +17,37 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5nZ-hy-yxA">
+                    <rect key="frame" x="0.0" y="44" width="414" height="728"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHt-Da-KwC">
+                    <rect key="frame" x="172" y="782.5" width="70" height="69"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="VOo-IV-oPQ"/>
+                        <constraint firstAttribute="height" constant="70" id="hae-nu-H4z"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="plus.circle" catalog="system"/>
+                    <connections>
+                        <action selector="addBattleTapped:" destination="-1" eventType="touchUpInside" id="hjC-Z5-elv"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="5nZ-hy-yxA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="90D-aC-1UC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5nZ-hy-yxA" secondAttribute="trailing" id="EA7-AV-G1Q"/>
+                <constraint firstItem="vHt-Da-KwC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QoJ-3k-jOv"/>
+                <constraint firstItem="vHt-Da-KwC" firstAttribute="top" secondItem="5nZ-hy-yxA" secondAttribute="bottom" constant="10" id="Y6q-Cn-Uam"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5nZ-hy-yxA" secondAttribute="bottom" constant="90" id="dQd-tA-Uk5"/>
+                <constraint firstItem="5nZ-hy-yxA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oPW-w6-RqZ"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="153"/>
         </view>
     </objects>
+    <resources>
+        <image name="plus.circle" catalog="system" width="64" height="60"/>
+    </resources>
 </document>

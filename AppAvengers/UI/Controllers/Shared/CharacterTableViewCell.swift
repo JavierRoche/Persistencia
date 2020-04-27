@@ -9,9 +9,6 @@
 import UIKit
 
 class CharacterTableViewCell: UITableViewCell {
-    /// Guarda el nombre exacto de la celda para evitar HARDCODE en el dequeue
-    static let cellIdentifier: String = String(describing: CharacterTableViewCell.self)
-    
     @IBOutlet weak var charAvatar: UIImageView!
     @IBOutlet weak var charName: UILabel!
     @IBOutlet weak var charPower: UIImageView!
@@ -38,16 +35,19 @@ class CharacterTableViewCell: UITableViewCell {
     }
     
     func configureCell(character: Any) {
-        if let hero = character as? Heroes {
+        switch character {
+        case let hero as Heroes:
             charAvatar.image = UIImage(named: hero.avatar ?? "AppIcon")
             charName.text = hero.name
             charPower.image = UIImage(named: "Stars\(hero.power)Icon")
-        } else {
-            if let villain = character as? Villains {
-                charAvatar.image = UIImage(named: villain.avatar ?? "AppIcon")
-                charName.text = villain.name
-                charPower.image = UIImage(named: "Stars\(villain.power)Icon")
-            }
+            
+        case let villain as Villains:
+            charAvatar.image = UIImage(named: villain.avatar ?? "AppIcon")
+            charName.text = villain.name
+            charPower.image = UIImage(named: "Stars\(villain.power)Icon")
+            
+        default :
+            print("Error")
         }
     }
 }

@@ -7,11 +7,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeroDetailViewController" customModule="AppAvengers" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterDetailViewController" customModule="AppAvengers" customModuleProvider="target">
             <connections>
+                <outlet property="characterAvatar" destination="MrU-9V-TiQ" id="gGP-gV-2vI"/>
+                <outlet property="characterPower" destination="2pm-jX-X5N" id="f7Q-Lk-7hZ"/>
                 <outlet property="editPower" destination="k4v-CK-IC8" id="UTj-JA-piD"/>
-                <outlet property="heroAvatar" destination="MrU-9V-TiQ" id="qvk-Rr-rfs"/>
-                <outlet property="heroPower" destination="2pm-jX-X5N" id="DKS-B9-rfd"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xvs-3a-Ec3"/>
             </connections>
         </placeholder>
@@ -42,7 +42,7 @@
                     <color key="tintColor" red="0.37947174" green="0.4803367824" blue="0.6886536593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" backgroundImage="pencil" catalog="system"/>
                     <connections>
-                        <action selector="editPower:" destination="-1" eventType="touchUpInside" id="agW-FI-PZr"/>
+                        <action selector="editPower:" destination="-1" eventType="touchUpInside" id="tji-JW-uTN"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-0x-vrr">

@@ -14,7 +14,7 @@ class VillainsViewController: UIViewController {
     /// Manejaremos el funcionamiento filtrando la lista de actuales, sea esta pra TODO o para DONE. En ALL pueden salir siempre todas
     private var villains: [Villains] = []
     /// El DataProvider para acceder a la clase que abstrae de la BBDD
-    private var dataProvider = DataProvider()
+    private var dataProvider: DataProvider = DataProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,8 @@ class VillainsViewController: UIViewController {
         table.tableFooterView = UIView()
         
         /// Registramos en nuestra tabla el tipo de celda que acepta
-        let nib = UINib.init(nibName: CharacterTableViewCell.cellIdentifier, bundle: nil)
-        table.register(nib, forCellReuseIdentifier: CharacterTableViewCell.cellIdentifier)
+        let nib = UINib.init(nibName: String(describing: CharacterTableViewCell.self), bundle: nil)
+        table.register(nib, forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
         
         /// Data Migration
 //        dataProvider.runDataMigration()
@@ -40,15 +40,15 @@ class VillainsViewController: UIViewController {
 
 // MARK: Delegate
 
-extension VillainsViewController: UITableViewDelegate, VillainDetailViewControllerDelegate {
+extension VillainsViewController: UITableViewDelegate, CharacterDetailViewControllerDelegate {
     /// Funcion delegada del protocolo de la ventana de detalle para que recarguemos la lista tras un cambio de poder
-    func reloadVillainsTable() {
+    func reloadCharactersTable() {
         table.reloadData()
     }
     
     /// Funcion delegada de UITableViewDelegate para seleccion de celda
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let villainDetail: VillainDetailViewController = VillainDetailViewController.init(villain: villains[indexPath.row])
+        let villainDetail: CharacterDetailViewController = CharacterDetailViewController.init(character: villains[indexPath.row])
         villainDetail.delegate = self
         self.navigationController?.pushViewController(villainDetail, animated: true)
         table.deselectRow(at: indexPath, animated: true)
@@ -69,7 +69,7 @@ extension VillainsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = table.dequeueReusableCell(withIdentifier: CharacterTableViewCell.cellIdentifier, for: indexPath) as? CharacterTableViewCell {
+        if let cell = table.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self), for: indexPath) as? CharacterTableViewCell {
             cell.configureCell(character: villains[indexPath.row])
             return cell
         }

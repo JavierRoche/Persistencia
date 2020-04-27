@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4E91EBCD-DDFC-4F46-946E-33141A0E6024"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AppAvengers/Data/Models/Database.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "fetchHeroes(heroID:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "49A5970B-EC21-4319-B2EC-0F9796682A43"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -32,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "Database"
-            landmarkType = "3">
+            landmarkName = "fetchVillains(villainID:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -174,8 +158,8 @@
             filePath = "AppAvengers/UI/Controllers/Shared/CharacterTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "configureCell(character:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -208,7 +192,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "persistData()"
+            landmarkName = "dataMigration()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -257,6 +241,22 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38BFA89D-09D9-4F36-84BC-62740A5FA4BC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppAvengers/UI/Controllers/Heroes/HeroesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

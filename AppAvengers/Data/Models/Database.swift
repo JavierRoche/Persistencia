@@ -49,19 +49,13 @@ class Database {
      }
      */
     func fetchHeroes(heroID: Int16?) -> [NSManagedObject]? {
-        ///QUITAR
-        var plural: String = "Heroes"
-        
         /// Definimos los parametros de busqueda con una NSFetchRequest y nos devolvera una lista de NSManagedObject
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityHeroes)
         
-        ///*
-        if let id: Int16 = heroID { //!= nil {
+        if let id: Int16 = heroID {
             let predicate: NSPredicate = NSPredicate(format: "\(entityHeroesHeroID) = %i", id)
             request.predicate = predicate
-            plural = "Heroe"
         }
-        ///*
         
         /// Incluimos un orden de los datos devueltos en el NSFetchRequest
         let sort: NSSortDescriptor = NSSortDescriptor.init(key: entityHeroesHeroID, ascending: true)
@@ -69,7 +63,7 @@ class Database {
         
         do {
             let heroes: [NSManagedObject]? = try managedObjectContext?.fetch(request) as? [NSManagedObject]
-            print("\(plural) devueltos por BBDD")
+            print("Heroes devueltos por BBDD")
             return heroes
             
         } catch {
@@ -90,19 +84,13 @@ class Database {
      }
      */
     func fetchVillains(villainID: Int16?) -> [NSManagedObject]? {
-        ///QUITAR
-        var plural: String = "Villains"
-        
         /// Definimos los parametros de busqueda con una NSFetchRequest y nos devolvera una lista de NSManagedObject
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityVillains)
         
-        ///*
         if let id: Int16 = villainID { //!= nil {
             let predicate: NSPredicate = NSPredicate(format: "\(entityVillainsVillainID) = %i", id)
             request.predicate = predicate
-            plural = "Villain"
         }
-        ///*
         
         /// Incluimos un orden de los datos devueltos en el NSFetchRequest
         let sort: NSSortDescriptor = NSSortDescriptor.init(key: entityVillainsVillainID, ascending: true)
@@ -110,7 +98,7 @@ class Database {
         
         do {
             let villains: [NSManagedObject]? = try managedObjectContext?.fetch(request) as? [NSManagedObject]
-            print("\(plural) devueltos por BBDD")
+            print("Villanos devueltos por BBDD")
             return villains
             
         } catch {
@@ -130,10 +118,10 @@ class Database {
         /// Para que los datos persistan del Managed Object al CoreData
         do {
             try managedObjectContext?.save()
-            print("Datos modificados en BBDD")
+            print("Commit de BBDD")
             
         } catch {
-            print("Error en modificacion en BBDD")
+            print("Error en Commit de BBDD")
         }
     }
     
@@ -276,21 +264,7 @@ class Database {
         villain10.setValue("Descripcion", forKey: entityVillainsDesc)
         
         /// Para que los datos persistan del Managed Object al CoreData
-//        do {
-//            try context.save()
-//            print("Heroes añadidos")
-//
-//        } catch {
-//            print("Error en migracion inicial")
-//        }
         persistData()
-//        do {
-//            try context.save()
-//            print("Datos modificados en BBDD")
-//
-//        } catch {
-//            print("Error en modificacion en BBDD")
-//        }
     }
     
     func deleteMigration() {
@@ -311,7 +285,7 @@ class Database {
             }
             
         } catch {
-            print("Error al borrar los heroes")
+            print("Error al borrar los Heroes")
         }
         
         /// Definimos los parametros de busqueda con una NSFetchRequest y nos devolvera un NSManagedObject
@@ -325,18 +299,11 @@ class Database {
             }
             
         } catch {
-            print("Error al borrar los villanos")
+            print("Error al borrar los Villanos")
         }
         
         /// Para que los datos persistan del Managed Object al CoreData
         persistData()
-//        do {
-//            try context.save()
-//            print("Heroes borrados")
-//
-//        } catch {
-//            print("Error al persistir el borrado")
-//        }
     }
     
     

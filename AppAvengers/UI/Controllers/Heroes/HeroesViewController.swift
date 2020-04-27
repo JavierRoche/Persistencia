@@ -14,7 +14,7 @@ class HeroesViewController: UIViewController {
     /// Nuestra lista de heroes que se recuperan de BBDD
     private var heroes: [Heroes] = []
     /// El DataProvider para acceder a la clase que abstrae de la BBDD
-    private var dataProvider = DataProvider()
+    private var dataProvider: DataProvider = DataProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,8 @@ class HeroesViewController: UIViewController {
         table.tableFooterView = UIView()
         
         /// Registramos en nuestra tabla el tipo de celda que acepta
-        let nib = UINib.init(nibName: CharacterTableViewCell.cellIdentifier, bundle: nil)
-        table.register(nib, forCellReuseIdentifier: CharacterTableViewCell.cellIdentifier)
+        let nib = UINib.init(nibName: String(describing: CharacterTableViewCell.self), bundle: nil)
+        table.register(nib, forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
         
         /// Data Migration
 
@@ -42,15 +42,15 @@ class HeroesViewController: UIViewController {
 
 // MARK: Delegate
 
-extension HeroesViewController: UITableViewDelegate, HeroDetailViewControllerDelegate {
+extension HeroesViewController: UITableViewDelegate, CharacterDetailViewControllerDelegate {
     /// Funcion delegada del protocolo de la ventana de detalle para que recarguemos la lista tras un cambio de poder
-    func reloadHeroesTable() {
+    func reloadCharactersTable() {
         table.reloadData()
     }
     
     /// Funcion delegada de UITableViewDelegate para seleccion de celda
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let heroDetail: HeroDetailViewController = HeroDetailViewController.init(hero: heroes[indexPath.row])
+        let heroDetail: CharacterDetailViewController = CharacterDetailViewController.init(character: heroes[indexPath.row])
         heroDetail.delegate = self
         self.navigationController?.pushViewController(heroDetail, animated: true)
         table.deselectRow(at: indexPath, animated: true)
@@ -71,7 +71,7 @@ extension HeroesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = table.dequeueReusableCell(withIdentifier: CharacterTableViewCell.cellIdentifier, for: indexPath) as? CharacterTableViewCell {
+        if let cell = table.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self), for: indexPath) as? CharacterTableViewCell {
             cell.configureCell(character: heroes[indexPath.row])
             return cell
         }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewBattleViewController" customModule="AppAvengers" customModuleProvider="target">
+            <connections>
+                <outlet property="battleName" destination="HMb-Fy-KGy" id="SRv-TP-ngH"/>
+                <outlet property="heroAvatar" destination="lt0-yZ-dIE" id="hl6-6X-6Us"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Yjc-hy-vzi"/>
+                <outlet property="villainAvatar" destination="8aa-Ht-X0J" id="roD-Jd-1Qg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMb-Fy-KGy">
+                    <rect key="frame" x="20" y="94" width="374" height="37"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                    <color key="textColor" red="0.37947174" green="0.4803367824" blue="0.6886536593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvengersAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="lt0-yZ-dIE">
+                    <rect key="frame" x="40" y="171" width="334" height="220"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="220" id="pLm-da-tsQ"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BattleImage" translatesAutoresizingMaskIntoConstraints="NO" id="ROL-CF-zR1">
+                    <rect key="frame" x="172" y="371" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="U3d-wP-RAY"/>
+                        <constraint firstAttribute="height" constant="70" id="dcK-0Z-Xgm"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VillainsAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="8aa-Ht-X0J">
+                    <rect key="frame" x="40" y="421" width="334" height="220"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="220" id="5GM-Ny-3sa"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXc-Nk-Kne">
+                    <rect key="frame" x="172" y="776.5" width="70" height="69"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="Bxy-Sf-FTG"/>
+                        <constraint firstAttribute="height" constant="70" id="nJf-Rh-Uvp"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="checkmark.circle" catalog="system"/>
+                    <connections>
+                        <action selector="runBattleTapped:" destination="-1" eventType="touchUpInside" id="OGj-PO-d5i"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8aa-Ht-X0J" secondAttribute="trailing" constant="40" id="A5T-qz-AM3"/>
+                <constraint firstItem="eXc-Nk-Kne" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Bab-Hg-gKd"/>
+                <constraint firstItem="HMb-Fy-KGy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="IS2-I5-ExD"/>
+                <constraint firstItem="ROL-CF-zR1" firstAttribute="top" secondItem="lt0-yZ-dIE" secondAttribute="bottom" constant="-20" id="Q1h-Ka-5Qt"/>
+                <constraint firstItem="HMb-Fy-KGy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Sf3-az-nHi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HMb-Fy-KGy" secondAttribute="trailing" constant="20" id="WbX-4F-ypE"/>
+                <constraint firstItem="ROL-CF-zR1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cFB-T9-cab"/>
+                <constraint firstItem="8aa-Ht-X0J" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="fzl-iy-018"/>
+                <constraint firstItem="lt0-yZ-dIE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="gvT-A4-OsF"/>
+                <constraint firstAttribute="bottom" secondItem="eXc-Nk-Kne" secondAttribute="bottom" constant="50" id="lpm-nQ-9qH"/>
+                <constraint firstItem="8aa-Ht-X0J" firstAttribute="top" secondItem="lt0-yZ-dIE" secondAttribute="bottom" constant="30" id="rpY-HG-wy0"/>
+                <constraint firstItem="lt0-yZ-dIE" firstAttribute="top" secondItem="HMb-Fy-KGy" secondAttribute="bottom" constant="40" id="tVw-um-NbO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lt0-yZ-dIE" secondAttribute="trailing" constant="40" id="wuc-2D-g3U"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-255.07246376811597" y="-89.0625"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AvengersAvatar" width="670" height="669"/>
+        <image name="BattleImage" width="512" height="512"/>
+        <image name="VillainsAvatar" width="670" height="672"/>
+        <image name="checkmark.circle" catalog="system" width="64" height="60"/>
+    </resources>
+</document>
