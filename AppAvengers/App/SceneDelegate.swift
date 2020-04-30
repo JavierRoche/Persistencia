@@ -13,9 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        /// Acceso al User Defaults
-        let userDefaultsScreen: UserDefaultsProvider = UserDefaultsProvider()
-        let _: String? = userDefaultsScreen.load()
+        
+        /// Acceso al User Defaults a configurar el primer acceso
+        configureAppData()
         
         /// Creamos ViewController para cada tab de la app
         let heroesViewController: HeroesViewController = HeroesViewController()
@@ -24,8 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         /// Con la propiedad tabBarItem podemos fijar detalles de cada tab
         heroesViewController.tabBarItem = UITabBarItem.init(title: "Avengers", image: UIImage(named: "AvengersIcon"), tag: 0)
-        battlesViewController.tabBarItem = UITabBarItem.init(title: "Battles", image: UIImage(named: "BattlesIcon"), tag: 0)
-        villainsViewController.tabBarItem = UITabBarItem.init(title: "Villains", image: UIImage(named: "VillainsIcon"), tag: 0)
+        battlesViewController.tabBarItem = UITabBarItem.init(title: "Battles", image: UIImage(named: "BattlesIcon"), tag: 1)
+        villainsViewController.tabBarItem = UITabBarItem.init(title: "Villains", image: UIImage(named: "VillainsIcon"), tag: 2)
         
         /// Creamos los navigation para cada vista que queramos que tenga navegacion y titulo
         let heroesNavigationViewController: UINavigationController = UINavigationController.init(rootViewController: heroesViewController)
@@ -37,7 +37,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = [heroesNavigationViewController, battlesNavigationViewController, villainsNavigationViewController]
         tabBarController.tabBar.barStyle = .default
         tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.tintColor = UIColor.init(red: 220/255.0, green: 146/255.0, blue: 40/255.0, alpha: 1.0)
+        tabBarController.tabBar.tintColor = UIColor.init(red: 62/255.0, green: 104/255.0, blue: 243/255.0, alpha: 1.0)
+        tabBarController.tabBar.barTintColor = UIColor.init(red: 219/255.0, green: 228/255.0, blue: 255/255.0, alpha: 1.0)
+        
+        /// Le pondemos algo de diseño a la barra de navegacion
+        UINavigationBar.appearance().barTintColor = UIColor.init(red: 137/255.0, green: 159/255.0, blue: 243/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 26)]
         
         /// Al iniciarse la aplicacion, la ventana carga un controlador de vista en ella (rootViewController) que sera el tabBar
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -49,37 +55,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
+    // MARK: Functions
+    
+    /// Acceso al User Defaults a recuperar la ultima vista visitada y la primera ejecucion
+    func configureAppData() {
+        let userDefaults: UserDefaultsProvider = UserDefaultsProvider()
+        let _: String? = userDefaults.loadUserView()
+        
+        /// La 1ª vez que se ejecuta se cargan los personajes y se inicializa el contador de batalla
+        if userDefaults.loadFirstRun() == true {
+            userDefaults.saveBattleNumber(number: 1)
+            userDefaults.saveFirstRun(firstRun: false)
+            /// Initial Data Migration
+            initialDataMigration()
+        }
+    }
+    
+    func initialDataMigration() {
+        /// El DataProvider para acceder a la clase que abstrae de la BBDD
+        let dataProvider: DataProvider = DataProvider()
+        dataProvider.runDeleteMigration()
+        dataProvider.runDataMigration()
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-
-        // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
 }
 

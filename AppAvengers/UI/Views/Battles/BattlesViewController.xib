@@ -20,7 +20,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5nZ-hy-yxA">
                     <rect key="frame" x="0.0" y="44" width="414" height="728"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHt-Da-KwC">
                     <rect key="frame" x="172" y="782.5" width="70" height="69"/>
@@ -28,13 +28,14 @@
                         <constraint firstAttribute="width" constant="70" id="VOo-IV-oPQ"/>
                         <constraint firstAttribute="height" constant="70" id="hae-nu-H4z"/>
                     </constraints>
+                    <color key="tintColor" red="0.37947174" green="0.4803367824" blue="0.6886536593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" backgroundImage="plus.circle" catalog="system"/>
                     <connections>
                         <action selector="addBattleTapped:" destination="-1" eventType="touchUpInside" id="hjC-Z5-elv"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.90196078431372551" green="0.94117647058823528" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5nZ-hy-yxA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="90D-aC-1UC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5nZ-hy-yxA" secondAttribute="trailing" id="EA7-AV-G1Q"/>

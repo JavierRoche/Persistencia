@@ -14,6 +14,7 @@
 		181F44DB2452E217000AC81F /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181F44DA2452E217000AC81F /* CharacterDetailViewController.xib */; };
 		181FAB592455CED000DC46CF /* PowerChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FAB582455CED000DC46CF /* PowerChangeViewController.swift */; };
 		181FAB5B2455DCC200DC46CF /* UserDefaultsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FAB5A2455DCC200DC46CF /* UserDefaultsProvider.swift */; };
+		182ED7CF24583CAB0056D0F8 /* BattleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182ED7CE24583CAB0056D0F8 /* BattleTableViewCell.xib */; };
 		18A722A52451ABBF00FEBF00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A722A42451ABBF00FEBF00 /* AppDelegate.swift */; };
 		18A722A72451ABBF00FEBF00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A722A62451ABBF00FEBF00 /* SceneDelegate.swift */; };
 		18A722AF2451ABBF00FEBF00 /* AppAvengers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A722AD2451ABBF00FEBF00 /* AppAvengers.xcdatamodeld */; };
@@ -29,6 +30,8 @@
 		18A722D62452095200FEBF00 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A722D52452095200FEBF00 /* CharacterTableViewCell.xib */; };
 		18A722D8245220D800FEBF00 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A722D7245220D800FEBF00 /* DataProvider.swift */; };
 		18A722DA2452215B00FEBF00 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A722D92452215B00FEBF00 /* Database.swift */; };
+		18B0F57B2459758A00769602 /* BattlesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B0F57A2459758A00769602 /* BattlesCollectionViewCell.xib */; };
+		18B0F57D245976DE00769602 /* BattlesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0F57C245976DE00769602 /* BattlesCollectionViewCell.swift */; };
 		18FE991424532B7700673F75 /* PowerChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FE991324532B7700673F75 /* PowerChangeViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,7 @@
 		181F44DA2452E217000AC81F /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
 		181FAB582455CED000DC46CF /* PowerChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerChangeViewController.swift; sourceTree = "<group>"; };
 		181FAB5A2455DCC200DC46CF /* UserDefaultsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProvider.swift; sourceTree = "<group>"; };
+		182ED7CE24583CAB0056D0F8 /* BattleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleTableViewCell.xib; sourceTree = "<group>"; };
 		18A722A12451ABBF00FEBF00 /* AppAvengers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppAvengers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A722A42451ABBF00FEBF00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A722A62451ABBF00FEBF00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 		18A722D52452095200FEBF00 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		18A722D7245220D800FEBF00 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		18A722D92452215B00FEBF00 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		18B0F57A2459758A00769602 /* BattlesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattlesCollectionViewCell.xib; sourceTree = "<group>"; };
+		18B0F57C245976DE00769602 /* BattlesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlesCollectionViewCell.swift; sourceTree = "<group>"; };
 		18FE991324532B7700673F75 /* PowerChangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PowerChangeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +77,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182ED7D02458513E0056D0F8 /* Battles */ = {
+			isa = PBXGroup;
+			children = (
+				18A722C92451E99100FEBF00 /* BattlesViewController.swift */,
+				180FD4BB2456E38100268769 /* NewBattleViewController.swift */,
+				180FD4B72456DD6000268769 /* BattleTableViewCell.swift */,
+			);
+			path = Battles;
+			sourceTree = "<group>";
+		};
+		182ED7D1245851550056D0F8 /* Battles */ = {
+			isa = PBXGroup;
+			children = (
+				18A722CB2451E9B800FEBF00 /* BattlesViewController.xib */,
+				180FD4BD2456E3F500268769 /* NewBattleViewController.xib */,
+				182ED7CE24583CAB0056D0F8 /* BattleTableViewCell.xib */,
+			);
+			path = Battles;
+			sourceTree = "<group>";
+		};
 		18855EAE2454B01C00CD4A7C /* Heroes */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,10 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				18855EAE2454B01C00CD4A7C /* Heroes */,
-				18A722C92451E99100FEBF00 /* BattlesViewController.swift */,
-				180FD4BB2456E38100268769 /* NewBattleViewController.swift */,
-				180FD4B72456DD6000268769 /* BattleTableViewCell.swift */,
 				18855EB62454B1C500CD4A7C /* Villains */,
+				182ED7D02458513E0056D0F8 /* Battles */,
 				18A722D12452090700FEBF00 /* Shared */,
 			);
 			path = Controllers;
@@ -166,11 +190,10 @@
 			isa = PBXGroup;
 			children = (
 				18855EAF2454B08600CD4A7C /* Heroes */,
-				18A722CB2451E9B800FEBF00 /* BattlesViewController.xib */,
-				180FD4BD2456E3F500268769 /* NewBattleViewController.xib */,
 				18855EBB2454B23A00CD4A7C /* Villains */,
-				18A722B22451ABC800FEBF00 /* LaunchScreen.storyboard */,
+				182ED7D1245851550056D0F8 /* Battles */,
 				18A722D22452091C00FEBF00 /* Shared */,
+				18A722B22451ABC800FEBF00 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,9 +201,9 @@
 		18A722C62451E78F00FEBF00 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				18A722C72451E79800FEBF00 /* Models */,
 				18A722D7245220D800FEBF00 /* DataProvider.swift */,
 				181FAB5A2455DCC200DC46CF /* UserDefaultsProvider.swift */,
+				18A722C72451E79800FEBF00 /* Models */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -206,8 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				180FD4BF2457116600268769 /* CharacterDetailViewController.swift */,
-				18A722D32452094400FEBF00 /* CharacterTableViewCell.swift */,
 				181FAB582455CED000DC46CF /* PowerChangeViewController.swift */,
+				18B0F57F2459D84E00769602 /* Cells */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -216,10 +239,28 @@
 			isa = PBXGroup;
 			children = (
 				181F44DA2452E217000AC81F /* CharacterDetailViewController.xib */,
-				18A722D52452095200FEBF00 /* CharacterTableViewCell.xib */,
 				18FE991324532B7700673F75 /* PowerChangeViewController.xib */,
+				18B0F57E2459D83F00769602 /* Cells */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		18B0F57E2459D83F00769602 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18A722D52452095200FEBF00 /* CharacterTableViewCell.xib */,
+				18B0F57A2459758A00769602 /* BattlesCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		18B0F57F2459D84E00769602 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18A722D32452094400FEBF00 /* CharacterTableViewCell.swift */,
+				18B0F57C245976DE00769602 /* BattlesCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +322,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A722CC2451E9B800FEBF00 /* BattlesViewController.xib in Resources */,
+				182ED7CF24583CAB0056D0F8 /* BattleTableViewCell.xib in Resources */,
 				181F44DB2452E217000AC81F /* CharacterDetailViewController.xib in Resources */,
+				18B0F57B2459758A00769602 /* BattlesCollectionViewCell.xib in Resources */,
 				18A722D62452095200FEBF00 /* CharacterTableViewCell.xib in Resources */,
 				180FD4BE2456E3F500268769 /* NewBattleViewController.xib in Resources */,
 				18A722BE2451AC6300FEBF00 /* HeroesViewController.xib in Resources */,
@@ -303,6 +346,7 @@
 				18A722A52451ABBF00FEBF00 /* AppDelegate.swift in Sources */,
 				18A722D8245220D800FEBF00 /* DataProvider.swift in Sources */,
 				18A722D42452094400FEBF00 /* CharacterTableViewCell.swift in Sources */,
+				18B0F57D245976DE00769602 /* BattlesCollectionViewCell.swift in Sources */,
 				180FD4C02457116600268769 /* CharacterDetailViewController.swift in Sources */,
 				181FAB5B2455DCC200DC46CF /* UserDefaultsProvider.swift in Sources */,
 				18A722CE2451E9D400FEBF00 /* VillainsViewController.swift in Sources */,

@@ -32,13 +32,6 @@
                         <constraint firstAttribute="height" constant="220" id="pLm-da-tsQ"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BattleImage" translatesAutoresizingMaskIntoConstraints="NO" id="ROL-CF-zR1">
-                    <rect key="frame" x="172" y="371" width="70" height="70"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="70" id="U3d-wP-RAY"/>
-                        <constraint firstAttribute="height" constant="70" id="dcK-0Z-Xgm"/>
-                    </constraints>
-                </imageView>
                 <imageView clipsSubviews="YES" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VillainsAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="8aa-Ht-X0J">
                     <rect key="frame" x="40" y="421" width="334" height="220"/>
                     <constraints>
@@ -51,27 +44,35 @@
                         <constraint firstAttribute="width" constant="70" id="Bxy-Sf-FTG"/>
                         <constraint firstAttribute="height" constant="70" id="nJf-Rh-Uvp"/>
                     </constraints>
+                    <color key="tintColor" red="0.37947174" green="0.4803367824" blue="0.6886536593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" backgroundImage="checkmark.circle" catalog="system"/>
                     <connections>
                         <action selector="runBattleTapped:" destination="-1" eventType="touchUpInside" id="OGj-PO-d5i"/>
                     </connections>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BattleImage" translatesAutoresizingMaskIntoConstraints="NO" id="Z7f-Xc-ael">
+                    <rect key="frame" x="172" y="371" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="8v5-g5-QKx"/>
+                        <constraint firstAttribute="height" constant="70" id="qlE-kd-bI8"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.90196078431372551" green="0.94117647058823528" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8aa-Ht-X0J" secondAttribute="trailing" constant="40" id="A5T-qz-AM3"/>
+                <constraint firstItem="Z7f-Xc-ael" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ba2-wV-4cx"/>
                 <constraint firstItem="eXc-Nk-Kne" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Bab-Hg-gKd"/>
                 <constraint firstItem="HMb-Fy-KGy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="IS2-I5-ExD"/>
-                <constraint firstItem="ROL-CF-zR1" firstAttribute="top" secondItem="lt0-yZ-dIE" secondAttribute="bottom" constant="-20" id="Q1h-Ka-5Qt"/>
                 <constraint firstItem="HMb-Fy-KGy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Sf3-az-nHi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HMb-Fy-KGy" secondAttribute="trailing" constant="20" id="WbX-4F-ypE"/>
-                <constraint firstItem="ROL-CF-zR1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cFB-T9-cab"/>
                 <constraint firstItem="8aa-Ht-X0J" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="fzl-iy-018"/>
                 <constraint firstItem="lt0-yZ-dIE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="gvT-A4-OsF"/>
                 <constraint firstAttribute="bottom" secondItem="eXc-Nk-Kne" secondAttribute="bottom" constant="50" id="lpm-nQ-9qH"/>
                 <constraint firstItem="8aa-Ht-X0J" firstAttribute="top" secondItem="lt0-yZ-dIE" secondAttribute="bottom" constant="30" id="rpY-HG-wy0"/>
                 <constraint firstItem="lt0-yZ-dIE" firstAttribute="top" secondItem="HMb-Fy-KGy" secondAttribute="bottom" constant="40" id="tVw-um-NbO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lt0-yZ-dIE" secondAttribute="trailing" constant="40" id="wuc-2D-g3U"/>
+                <constraint firstItem="Z7f-Xc-ael" firstAttribute="top" secondItem="lt0-yZ-dIE" secondAttribute="bottom" constant="-20" id="zrD-Y9-378"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-255.07246376811597" y="-89.0625"/>

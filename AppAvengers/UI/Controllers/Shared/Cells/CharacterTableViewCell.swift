@@ -40,11 +40,13 @@ class CharacterTableViewCell: UITableViewCell {
             charAvatar.image = UIImage(named: hero.avatar ?? "AppIcon")
             charName.text = hero.name
             charPower.image = UIImage(named: "Stars\(hero.power)Icon")
+            contentView.backgroundColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 255/255.0, alpha: 1.0)
             
         case let villain as Villains:
             charAvatar.image = UIImage(named: villain.avatar ?? "AppIcon")
             charName.text = villain.name
             charPower.image = UIImage(named: "Stars\(villain.power)Icon")
+            contentView.backgroundColor = UIColor.init(red: 255/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
             
         default :
             print("Error")

@@ -23,7 +23,7 @@ class DataProvider {
         database = nil
     }
     
-    /// Funcion que devuelve todos los heroes de BBDD
+    /// Funcion que devuelve una lista de heroes de BBDD, acepta solo 1
     func loadHeroes(heroID: Int16?) -> [Heroes] {
         guard let heroes: [Heroes] = database?.fetchHeroes(heroID: heroID) as? [Heroes] else {
             return []
@@ -31,12 +31,25 @@ class DataProvider {
         return heroes
     }
     
-    /// Funcion que devuelve todos los villanos de BBDD
+    /// Funcion que devuelve una lista de villanos de BBDD, acepta solo 1
     func loadVillains(villainID: Int16?) -> [Villains] {
         guard let villains: [Villains] = database?.fetchVillains(villainID: villainID) as? [Villains] else {
             return []
         }
         return villains
+    }
+    
+    /// Funcion que devuelve una lista de batallas de BBDD, acepta solo 1
+    func loadBattles(characterID: Int16?) -> [Battles] {
+        guard let battles: [Battles] = database?.fetchBattles(characterID: characterID) as? [Battles] else {
+            return []
+        }
+        return battles
+    }
+    
+    /// Funcion que crea una nueva batalla en BBDD
+    func createBattle() -> Battles? {
+        return database?.insertBattle() as? Battles
     }
     
     /// Funcion que commitea los datos en la BBDD
@@ -46,7 +59,7 @@ class DataProvider {
 }
 
 
-// MARK: Migration
+// MARK: Initial Migration
 
 extension DataProvider {
     func runDataMigration() {

@@ -21,7 +21,9 @@ class PowerChangeViewController: UIViewController {
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     
+    /// Nos permite tener siempre guardado el poder modificado
     private var powerToSave: Int16 = 0
+    /// La reutilizacion de la vista nos obliga a recibir Any
     private var character: Any?
     private var hero: Heroes?
     private var villain: Villains?
@@ -39,11 +41,11 @@ class PowerChangeViewController: UIViewController {
         super.viewDidLoad()
         
         /// Añadimos un borde a la celda
-        sizedView.layer.cornerRadius = 6.0
+        sizedView.layer.cornerRadius = 8.0
         sizedView.layer.shadowColor = UIColor.gray.cgColor
         sizedView.layer.shadowOffset = CGSize.zero
-        sizedView.layer.shadowRadius = 6.0
-        sizedView.layer.shadowOpacity = 0.2
+        sizedView.layer.shadowRadius = 8.0
+        sizedView.layer.shadowOpacity = 0.6
     }
     
     
@@ -94,8 +96,8 @@ class PowerChangeViewController: UIViewController {
         star5.setBackgroundImage(UIImage(systemName: "star.fill"), for: .normal)
     }
     
+    /// Cerramos la ventana
     @IBAction func cancelTapped(_ sender: Any) {
-        /// Cerramos la ventana
         dismiss(animated: true, completion: nil)
     }
     
@@ -104,16 +106,19 @@ class PowerChangeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         
         /// Primero recuperamos el objeto Heroes/Villano que necesitamos modificar
-        if let hero = self.character as? Heroes {
+        switch character {
+        case let hero as Heroes:
             self.hero = dataProvider.loadHeroes(heroID: hero.heroID).first
             /// Modificamos el valor del power
             self.hero?.power = powerToSave
-        } else {
-            if let villain = self.character as? Villains {
-                self.villain = dataProvider.loadVillains(villainID: villain.villainID).first
-                /// Modificamos el valor del power
-                self.villain?.power = powerToSave
-            }
+            
+        case let villain as Villains:
+            self.villain = dataProvider.loadVillains(villainID: villain.villainID).first
+            /// Modificamos el valor del power
+            self.villain?.power = powerToSave
+            
+        default:
+            break
         }
         
         /// Persistimos los cambios
