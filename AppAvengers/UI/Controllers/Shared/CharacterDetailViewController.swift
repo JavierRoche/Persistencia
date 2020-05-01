@@ -9,8 +9,8 @@
 import UIKit
 
 /// Protocolo de comunicacion con la ventana principal de lista de heroes
-protocol CharacterDetailViewControllerDelegate: class {
-    func reloadCharactersTable()
+protocol CharacterPowerChangeDelegate: class {
+    func reloadAfterPowerChange()
 }
 
 class CharacterDetailViewController: UIViewController {
@@ -26,7 +26,7 @@ class CharacterDetailViewController: UIViewController {
     /// El DataProvider para acceder a la clase que abstrae de la BBDD
     private var dataProvider: DataProvider = DataProvider()
     /// El delegado para poder llamar al protocolo y que se actualizen las ventanas
-    weak var delegate: CharacterDetailViewControllerDelegate?
+    weak var delegate: CharacterPowerChangeDelegate?
     
     convenience init(character: Any) {
         self.init(nibName: String(describing: CharacterDetailViewController.self), bundle: nil)
@@ -46,6 +46,20 @@ class CharacterDetailViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        switch character {
+        case let hero as Heroes:
+            battles = dataProvider.loadBattles(characterID: hero.heroID)
+        case let villain as Villains:
+            battles = dataProvider.loadBattles(characterID: villain.villainID)
+        default :
+            break
+        }
+        
+        battlesCollection.reloadData()
+    }
+    
+    
     // MARK: IBActions
     
     /// Recoge el evento de pulsado del boton de edicion del poder
@@ -57,6 +71,9 @@ class CharacterDetailViewController: UIViewController {
         self.present(editPowerView, animated: true, completion: nil)
     }
     
+    
+    // MARK: Functions
+    
     /// Segun el tipo de personaje configuramos su UI, y recuperamos SUS batallas
     func configureUI() {
         switch character {
@@ -65,7 +82,6 @@ class CharacterDetailViewController: UIViewController {
             characterAvatar.image = UIImage(named: hero.avatar ?? "AppIcon")
             characterPower.image = UIImage(named: "Stars\(hero.power)Icon")
             descLabel.text = hero.desc
-            battles = dataProvider.loadBattles(characterID: hero.heroID)
             battlesCollection.backgroundColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 255/255.0, alpha: 1.0)
             view.backgroundColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 255/255.0, alpha: 1.0)
             
@@ -74,7 +90,6 @@ class CharacterDetailViewController: UIViewController {
             characterAvatar.image = UIImage(named: villain.avatar ?? "AppIcon")
             characterPower.image = UIImage(named: "Stars\(villain.power)Icon")
             descLabel.text = villain.desc
-            battles = dataProvider.loadBattles(characterID: villain.villainID)
             battlesCollection.backgroundColor = UIColor.init(red: 255/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
             view.backgroundColor = UIColor.init(red: 255/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
             
@@ -87,17 +102,17 @@ class CharacterDetailViewController: UIViewController {
 
 // MARK: UICollectionView Delegate
 
-extension CharacterDetailViewController: UICollectionViewDelegate, PowerChangeViewControllerDelegate {
+extension CharacterDetailViewController: UICollectionViewDelegate, PowerChangedDelegate {
     /// Funcion delegada del protocolo de la ventana de detalle para que recarguemos el detalle del power y avisar a la lista principal para que tambien repinte
     func powerChanged(power: Int16) {
         self.characterPower.image = UIImage(named: "Stars\(power)Icon")
-        delegate?.reloadCharactersTable()
+        delegate?.reloadAfterPowerChange()
     }
     
-    /// Seleccion de una celda en el UICollectionView
+    /// Seleccion de un item en el UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /// Codificar la presentacion del detalle de la batalla <-- TODO
-        print("didSelectItemAt")
+        let battleDetail: BattleDetailViewController = BattleDetailViewController.init(battle: battles[indexPath.row])
+        self.navigationController?.pushViewController(battleDetail, animated: true)
     }
 }
 
@@ -116,14 +131,19 @@ extension CharacterDetailViewController: UICollectionViewDataSource {
             /// Configuramos cada item del UICollectionView con las batallas del heroe o del villano
             switch character {
             case let hero as Heroes:
-                cell.configureCell(battle: battles[indexPath.row], characterID: hero.heroID)
+                if battles[indexPath.row].heroID == hero.heroID {
+                    cell.configureCell(battle: battles[indexPath.row], characterID: hero.heroID)
+                }
                 
             case let villain as Villains:
-                cell.configureCell(battle: battles[indexPath.row], characterID: villain.villainID)
+                if battles[indexPath.row].villainID == villain.villainID {
+                    cell.configureCell(battle: battles[indexPath.row], characterID: villain.villainID)
+                }
                 
             default :
                 break
             }
+            cell.setNeedsLayout()
             return cell
         }
         fatalError("Cells couldn't be created")

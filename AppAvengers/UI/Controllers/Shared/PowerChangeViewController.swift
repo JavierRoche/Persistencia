@@ -9,7 +9,7 @@
 import UIKit
 
 /// Protocolo de comunicacion con la ventana de detalle
-protocol PowerChangeViewControllerDelegate: class {
+protocol PowerChangedDelegate: class {
     func powerChanged(power: Int16)
 }
 
@@ -30,7 +30,7 @@ class PowerChangeViewController: UIViewController {
     /// El DataProvider para acceder a la clase que abstrae de la BBDD
     private var dataProvider = DataProvider()
     /// El delegado para poder llamar al protocolo y que se actualize la ventana de detalle y se recargue la lista
-    weak var delegate: PowerChangeViewControllerDelegate?
+    weak var delegate: PowerChangedDelegate?
     
     convenience init(character: Any?) {
         self.init(nibName: String(describing: PowerChangeViewController.self), bundle: nil)
@@ -102,9 +102,6 @@ class PowerChangeViewController: UIViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-        /// Cerramos la ventana y actualizamos el objeto en BBDD
-        dismiss(animated: true, completion: nil)
-        
         /// Primero recuperamos el objeto Heroes/Villano que necesitamos modificar
         switch character {
         case let hero as Heroes:
@@ -123,8 +120,10 @@ class PowerChangeViewController: UIViewController {
         
         /// Persistimos los cambios
         dataProvider.saveData()
+        
         /// Informamos a la ventana de detalle para que repinte. Ésta, a su vez, informara a la principal
         delegate?.powerChanged(power: powerToSave)
+        dismiss(animated: true, completion: nil)
     }
 }
 

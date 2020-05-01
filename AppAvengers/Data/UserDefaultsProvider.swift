@@ -14,24 +14,23 @@ class UserDefaultsProvider {
     private let keyUserView = "keyUserView"
     private let keyBattleNumber = "keyBattleNumber"
 
+    
     // MARK: Last User View Visited
     
     /// Para guardar el valor para la clave de ultima vista visitada
-    func saveUserView(view: String) {
+    func saveUserView(view: Int) {
         UserDefaults.standard.set(view, forKey: keyUserView)
     }
     
     /// Para recuperar el valor para la clave de ultima vista visitada
-    func loadUserView() -> String? {
+    func loadUserView() -> Int {
         /// Podemos comprobar si la clave existe antes de intentar leerla
         if UserDefaults.standard.dictionaryRepresentation().keys.contains(keyUserView) {
-            /// Si conocemos el valor esperado podemos usar el tipo despues de standard, porque .value devuelve Any
-            print(UserDefaults.standard.dictionaryRepresentation().keys.debugDescription)
-            return UserDefaults.standard.string(forKey: keyUserView)
+            return UserDefaults.standard.integer(forKey: keyUserView)
             
         } else {
-            print("La clave no existe")
-            return String(describing: HeroesViewController.self)
+//            print("La clave no existe")
+            return 1
         }
     }
     
@@ -51,7 +50,7 @@ class UserDefaultsProvider {
             return UserDefaults.standard.integer(forKey: keyBattleNumber)
             
         } else {
-            print("La clave no existe")
+//            print("La clave no existe")
             return 1
         }
     }
@@ -72,7 +71,7 @@ class UserDefaultsProvider {
             return UserDefaults.standard.bool(forKey: keyFirstRun)
             
         } else {
-            print("La clave no existe")
+//            print("La clave no existe")
             return true
         }
     }

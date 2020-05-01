@@ -78,8 +78,9 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fP-7U-WMT">
-                    <rect key="frame" x="20" y="544" width="374" height="268"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fP-7U-WMT">
+                    <rect key="frame" x="20" y="544" width="374" height="25.5"/>
+                    <color key="tintColor" red="0.37947174" green="0.4803367824" blue="0.6886536593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                     <color key="textColor" red="0.37947174" green="0.4803367824" blue="0.6886536593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -102,7 +103,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GVQ-l0-7aO" secondAttribute="trailing" constant="20" id="rpt-oP-Hfe"/>
                 <constraint firstItem="56r-oj-ehx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="s7r-fw-NSq"/>
                 <constraint firstItem="k4v-CK-IC8" firstAttribute="top" secondItem="MrU-9V-TiQ" secondAttribute="bottom" constant="34" id="tCg-ky-f5w"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1fP-7U-WMT" secondAttribute="bottom" constant="50" id="tr2-g4-nG7"/>
                 <constraint firstItem="2pm-jX-X5N" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="u0k-6C-F8e"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MrU-9V-TiQ" secondAttribute="trailing" constant="20" id="wKP-JH-nLU"/>
                 <constraint firstItem="GVQ-l0-7aO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="zac-sK-B0b"/>

@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewBattleViewController" customModule="AppAvengers" customModuleProvider="target">
             <connections>
-                <outlet property="battleName" destination="HMb-Fy-KGy" id="SRv-TP-ngH"/>
+                <outlet property="battleName" destination="HMb-Fy-KGy" id="5kP-r0-XSW"/>
                 <outlet property="heroAvatar" destination="lt0-yZ-dIE" id="hl6-6X-6Us"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yjc-hy-vzi"/>
                 <outlet property="villainAvatar" destination="8aa-Ht-X0J" id="roD-Jd-1Qg"/>

@@ -8,11 +8,6 @@
 
 import UIKit
 
-/// Protocolo de comunicacion con la ventana principal de lista de batallas
-protocol NewBattleViewControllerDelegate: class {
-    func reloadBattlesTable()
-}
-
 class NewBattleViewController: UIViewController {
     @IBOutlet weak var battleName: UILabel!
     @IBOutlet weak var heroAvatar: UIImageView!
@@ -22,8 +17,6 @@ class NewBattleViewController: UIViewController {
     private var hero: Heroes?
     private var villain: Villains?
     private let caBattle: String = "Battle"
-    /// El delegado para poder llamar al protocolo y que se actualize la lista
-    weak var delegate: NewBattleViewControllerDelegate?
     /// El DataProvider para acceder a la clase que abstrae de la BBDD
     private var dataProvider = DataProvider()
     
@@ -63,9 +56,6 @@ class NewBattleViewController: UIViewController {
         
         /// Aumentamos en 1 el contador de batalla
         userDefaults.saveBattleNumber(number: battleID + 1)
-        
-        /// Avisamos al protocolo delegado para que repinte la tabla
-        delegate?.reloadBattlesTable()
         dismiss(animated: true, completion: nil)
     }
     
@@ -92,6 +82,9 @@ class NewBattleViewController: UIViewController {
     @objc private func closeViewTapped() {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    // MARK: Functions
     
     func configureUI() {
         /// Creacion del boton de la barra de navegacion para ir hacia atras

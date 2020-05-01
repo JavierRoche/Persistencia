@@ -24,6 +24,7 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vVK-4g-dhk" secondAttribute="bottom" id="U05-OB-xmS"/>
                 <constraint firstItem="vVK-4g-dhk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="URy-Cq-b6b"/>

@@ -52,6 +52,11 @@ class DataProvider {
         return database?.insertBattle() as? Battles
     }
     
+    /// Funcion que borra una lista de objetos en BBDD
+    func deleteBattles(battles: [Battles]) {
+        database?.deleteObjects(objects: battles)
+    }
+
     /// Funcion que commitea los datos en la BBDD
     func saveData() {
         database?.persistData()

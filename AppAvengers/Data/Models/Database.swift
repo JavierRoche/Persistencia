@@ -28,6 +28,9 @@ class Database {
     private var entityBattlesBattleID = "battleID"
     private var entityBattlesHeroID = "heroID"
     private var entityBattlesVillainID = "villainID"
+    private var entityBattlesWinnerID = "winnerID"
+    private var entityBattlesHero = "hero"
+    private var entityBattlesVillain = "villain"
     
     /// Cargamos el AppDelegate para tener acceso al Persistent Containter desde nuestra clase
     private var managedObjectContext: NSManagedObjectContext? {
@@ -63,11 +66,11 @@ class Database {
         
         do {
             let heroes: [NSManagedObject]? = try managedObjectContext?.fetch(request) as? [NSManagedObject]
-            print("Heroes devueltos por BBDD")
+//            print("Heroes devueltos por BBDD")
             return heroes
             
         } catch {
-            print("No se han podido recuperar los Heroes")
+//            print("No se han podido recuperar los Heroes")
             return []
         }
     }
@@ -95,11 +98,11 @@ class Database {
         
         do {
             let villains: [NSManagedObject]? = try managedObjectContext?.fetch(request) as? [NSManagedObject]
-            print("Villanos devueltos por BBDD")
+//            print("Villanos devueltos por BBDD")
             return villains
             
         } catch {
-            print("No se han podido recuperar los Villanos")
+//            print("No se han podido recuperar los Villanos")
             return []
         }
     }
@@ -127,11 +130,11 @@ class Database {
         
         do {
             let battles: [NSManagedObject]? = try managedObjectContext?.fetch(request) as? [NSManagedObject]
-            print("Batallas devueltas por BBDD")
+//            print("Batallas devueltas por BBDD")
             return battles
             
         } catch {
-            print("No se han podido recuperar las Batallas")
+//            print("No se han podido recuperar las Batallas")
             return[]
         }
     }
@@ -148,6 +151,20 @@ class Database {
         /// En este momento se transforma el NSManagedObject en objeto del modelo Battles
         return Battles(entity: entity, insertInto: context)
     }
+        
+    
+    /// func deleteBattles(battles: [Battles]) {
+    ///    database?.deleteObjects(objects: battles)
+    /// }
+    func deleteObjects(objects: [NSManagedObject]) {
+        /// Recorremos la lista de objetos a borrar
+        objects.forEach {
+            managedObjectContext?.delete($0)
+        }
+        
+        /// Si no salvamos los datos no se persisten despues del delete
+        persistData()
+    }
     
     
     /// func saveData() {
@@ -157,10 +174,10 @@ class Database {
         /// Para que los datos persistan del Managed Object al CoreData
         do {
             try managedObjectContext?.save()
-            print("Commit de BBDD")
+//            print("Commit de BBDD")
             
         } catch {
-            print("Error en Commit de BBDD")
+//            print("Error en Commit de BBDD")
         }
     }
     
@@ -171,7 +188,8 @@ class Database {
         /// Sino podemos cargar las entidades no podemos continuar
         guard let context = managedObjectContext,
               let entityHeroes = NSEntityDescription.entity(forEntityName: entityHeroes, in: context),
-              let entityVillains = NSEntityDescription.entity(forEntityName: entityVillains, in: context) else {
+              let entityVillains = NSEntityDescription.entity(forEntityName: entityVillains, in: context),
+              let entityBattles = NSEntityDescription.entity(forEntityName: entityBattles, in: context) else {
             return
         }
         /// Creamos un objeto NSManagedObject (registro) de la entidad que contendra la informacion de ese objeto (registro)
@@ -302,6 +320,150 @@ class Database {
         villain10.setValue(0, forKey: entityVillainsPower)
         villain10.setValue("Although Ultron first appears in Avengers #54 (1968), the character is disguised for the majority of the issue as the Crimson Cowl, with his face only revealed on the last page of the issue...", forKey: entityVillainsDesc)
         
+        /// Creamos un objeto NSManagedObject (registro) de la entidad que contendra la informacion de ese objeto (registro)
+        /// Se debe indicar el nombre de la entidad y el contexto del Managed Object
+        let battle1: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        /// Informamos sus campos, como si de un registro de BD se tratase
+        battle1.setValue(1, forKey: entityBattlesBattleID)
+        battle1.setValue(1, forKey: entityBattlesHeroID)
+        battle1.setValue(11, forKey: entityBattlesVillainID)
+        battle1.setValue(1, forKey: entityBattlesWinnerID)
+        battle1.setValue(hero1, forKey: entityBattlesHero)
+        battle1.setValue(villain1, forKey: entityBattlesVillain)
+        let battle2: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle2.setValue(2, forKey: entityBattlesBattleID)
+        battle2.setValue(1, forKey: entityBattlesHeroID)
+        battle2.setValue(11, forKey: entityBattlesVillainID)
+        battle2.setValue(11, forKey: entityBattlesWinnerID)
+        battle2.setValue(hero1, forKey: entityBattlesHero)
+        battle2.setValue(villain1, forKey: entityBattlesVillain)
+        let battle3: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle3.setValue(3, forKey: entityBattlesBattleID)
+        battle3.setValue(2, forKey: entityBattlesHeroID)
+        battle3.setValue(12, forKey: entityBattlesVillainID)
+        battle3.setValue(2, forKey: entityBattlesWinnerID)
+        battle3.setValue(hero2, forKey: entityBattlesHero)
+        battle3.setValue(villain2, forKey: entityBattlesVillain)
+        let battle4: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle4.setValue(4, forKey: entityBattlesBattleID)
+        battle4.setValue(2, forKey: entityBattlesHeroID)
+        battle4.setValue(12, forKey: entityBattlesVillainID)
+        battle4.setValue(12, forKey: entityBattlesWinnerID)
+        battle4.setValue(hero2, forKey: entityBattlesHero)
+        battle4.setValue(villain2, forKey: entityBattlesVillain)
+        let battle5: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle5.setValue(5, forKey: entityBattlesBattleID)
+        battle5.setValue(3, forKey: entityBattlesHeroID)
+        battle5.setValue(13, forKey: entityBattlesVillainID)
+        battle5.setValue(3, forKey: entityBattlesWinnerID)
+        battle5.setValue(hero3, forKey: entityBattlesHero)
+        battle5.setValue(villain3, forKey: entityBattlesVillain)
+        let battle6: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle6.setValue(6, forKey: entityBattlesBattleID)
+        battle6.setValue(3, forKey: entityBattlesHeroID)
+        battle6.setValue(13, forKey: entityBattlesVillainID)
+        battle6.setValue(13, forKey: entityBattlesWinnerID)
+        battle6.setValue(hero3, forKey: entityBattlesHero)
+        battle6.setValue(villain3, forKey: entityBattlesVillain)
+        let battle7: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle7.setValue(7, forKey: entityBattlesBattleID)
+        battle7.setValue(4, forKey: entityBattlesHeroID)
+        battle7.setValue(14, forKey: entityBattlesVillainID)
+        battle7.setValue(4, forKey: entityBattlesWinnerID)
+        battle7.setValue(hero4, forKey: entityBattlesHero)
+        battle7.setValue(villain4, forKey: entityBattlesVillain)
+        let battle8: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle8.setValue(8, forKey: entityBattlesBattleID)
+        battle8.setValue(4, forKey: entityBattlesHeroID)
+        battle8.setValue(14, forKey: entityBattlesVillainID)
+        battle8.setValue(14, forKey: entityBattlesWinnerID)
+        battle8.setValue(hero4, forKey: entityBattlesHero)
+        battle8.setValue(villain4, forKey: entityBattlesVillain)
+        let battle9: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle9.setValue(9, forKey: entityBattlesBattleID)
+        battle9.setValue(5, forKey: entityBattlesHeroID)
+        battle9.setValue(15, forKey: entityBattlesVillainID)
+        battle9.setValue(5, forKey: entityBattlesWinnerID)
+        battle9.setValue(hero5, forKey: entityBattlesHero)
+        battle9.setValue(villain5, forKey: entityBattlesVillain)
+        let battle10: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle10.setValue(10, forKey: entityBattlesBattleID)
+        battle10.setValue(5, forKey: entityBattlesHeroID)
+        battle10.setValue(15, forKey: entityBattlesVillainID)
+        battle10.setValue(15, forKey: entityBattlesWinnerID)
+        battle10.setValue(hero5, forKey: entityBattlesHero)
+        battle10.setValue(villain5, forKey: entityBattlesVillain)
+        let battle11: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle11.setValue(11, forKey: entityBattlesBattleID)
+        battle11.setValue(6, forKey: entityBattlesHeroID)
+        battle11.setValue(16, forKey: entityBattlesVillainID)
+        battle11.setValue(6, forKey: entityBattlesWinnerID)
+        battle11.setValue(hero6, forKey: entityBattlesHero)
+        battle11.setValue(villain6, forKey: entityBattlesVillain)
+        let battle12: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle12.setValue(12, forKey: entityBattlesBattleID)
+        battle12.setValue(6, forKey: entityBattlesHeroID)
+        battle12.setValue(16, forKey: entityBattlesVillainID)
+        battle12.setValue(16, forKey: entityBattlesWinnerID)
+        battle12.setValue(hero6, forKey: entityBattlesHero)
+        battle12.setValue(villain6, forKey: entityBattlesVillain)
+        let battle13: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle13.setValue(13, forKey: entityBattlesBattleID)
+        battle13.setValue(7, forKey: entityBattlesHeroID)
+        battle13.setValue(17, forKey: entityBattlesVillainID)
+        battle13.setValue(7, forKey: entityBattlesWinnerID)
+        battle13.setValue(hero7, forKey: entityBattlesHero)
+        battle13.setValue(villain7, forKey: entityBattlesVillain)
+        let battle14: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle14.setValue(14, forKey: entityBattlesBattleID)
+        battle14.setValue(7, forKey: entityBattlesHeroID)
+        battle14.setValue(17, forKey: entityBattlesVillainID)
+        battle14.setValue(17, forKey: entityBattlesWinnerID)
+        battle14.setValue(hero7, forKey: entityBattlesHero)
+        battle14.setValue(villain7, forKey: entityBattlesVillain)
+        let battle15: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle15.setValue(15, forKey: entityBattlesBattleID)
+        battle15.setValue(8, forKey: entityBattlesHeroID)
+        battle15.setValue(18, forKey: entityBattlesVillainID)
+        battle15.setValue(8, forKey: entityBattlesWinnerID)
+        battle15.setValue(hero8, forKey: entityBattlesHero)
+        battle15.setValue(villain8, forKey: entityBattlesVillain)
+        let battle16: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle16.setValue(16, forKey: entityBattlesBattleID)
+        battle16.setValue(8, forKey: entityBattlesHeroID)
+        battle16.setValue(18, forKey: entityBattlesVillainID)
+        battle16.setValue(18, forKey: entityBattlesWinnerID)
+        battle16.setValue(hero8, forKey: entityBattlesHero)
+        battle16.setValue(villain8, forKey: entityBattlesVillain)
+        let battle17: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle17.setValue(17, forKey: entityBattlesBattleID)
+        battle17.setValue(9, forKey: entityBattlesHeroID)
+        battle17.setValue(19, forKey: entityBattlesVillainID)
+        battle17.setValue(9, forKey: entityBattlesWinnerID)
+        battle17.setValue(hero9, forKey: entityBattlesHero)
+        battle17.setValue(villain9, forKey: entityBattlesVillain)
+        let battle18: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle18.setValue(18, forKey: entityBattlesBattleID)
+        battle18.setValue(9, forKey: entityBattlesHeroID)
+        battle18.setValue(19, forKey: entityBattlesVillainID)
+        battle18.setValue(19, forKey: entityBattlesWinnerID)
+        battle18.setValue(hero9, forKey: entityBattlesHero)
+        battle18.setValue(villain9, forKey: entityBattlesVillain)
+        let battle19: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle19.setValue(19, forKey: entityBattlesBattleID)
+        battle19.setValue(10, forKey: entityBattlesHeroID)
+        battle19.setValue(20, forKey: entityBattlesVillainID)
+        battle19.setValue(10, forKey: entityBattlesWinnerID)
+        battle19.setValue(hero10, forKey: entityBattlesHero)
+        battle19.setValue(villain10, forKey: entityBattlesVillain)
+        let battle20: NSManagedObject = NSManagedObject(entity: entityBattles, insertInto: context)
+        battle20.setValue(20, forKey: entityBattlesBattleID)
+        battle20.setValue(10, forKey: entityBattlesHeroID)
+        battle20.setValue(20, forKey: entityBattlesVillainID)
+        battle20.setValue(20, forKey: entityBattlesWinnerID)
+        battle20.setValue(hero10, forKey: entityBattlesHero)
+        battle20.setValue(villain10, forKey: entityBattlesVillain)
+        
         /// Para que los datos persistan del Managed Object al CoreData
         persistData()
     }
@@ -324,7 +486,7 @@ class Database {
             }
             
         } catch {
-            print("Error al borrar los Heroes")
+//            print("Error al borrar los Heroes")
         }
         
         /// Definimos los parametros de busqueda con una NSFetchRequest y nos devolvera un NSManagedObject
@@ -338,7 +500,7 @@ class Database {
             }
             
         } catch {
-            print("Error al borrar los Villanos")
+//            print("Error al borrar los Villanos")
         }
         
         /// Definimos los parametros de busqueda con una NSFetchRequest y nos devolvera un NSManagedObject
@@ -352,7 +514,7 @@ class Database {
             }
             
         } catch {
-            print("Error al borrar las Batallas")
+//            print("Error al borrar las Batallas")
         }
         
         /// Para que los datos persistan del Managed Object al CoreData

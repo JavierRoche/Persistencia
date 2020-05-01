@@ -50,14 +50,19 @@ class HeroesViewController: UIViewController {
         /// Cargamos nuestra [Heroes] mediante nuestra clase DataProvider
         heroes = dataProvider.loadHeroes(heroID: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let userDefaults: UserDefaultsProvider = UserDefaultsProvider()
+        userDefaults.saveUserView(view: 0)
+    }
 }
 
 
 // MARK: UITableView Delegate
 
-extension HeroesViewController: UITableViewDelegate, CharacterDetailViewControllerDelegate {
+extension HeroesViewController: UITableViewDelegate, CharacterPowerChangeDelegate {
     /// Funcion delegada del protocolo de la ventana de detalle para que recarguemos la lista tras un cambio de poder
-    func reloadCharactersTable() {
+    func reloadAfterPowerChange() {
         table.reloadData()
     }
     
@@ -75,9 +80,9 @@ extension HeroesViewController: UITableViewDelegate, CharacterDetailViewControll
             
         } else {
             /// Cuando se usa el UIView para acceder al detalle de un personaje lanzamos la vista de detalle
-            let hero: CharacterDetailViewController = CharacterDetailViewController.init(character: heroes[indexPath.row])
-            hero.delegate = self
-            self.navigationController?.pushViewController(hero, animated: true)
+            let heroDetail: CharacterDetailViewController = CharacterDetailViewController.init(character: heroes[indexPath.row])
+            heroDetail.delegate = self
+            self.navigationController?.pushViewController(heroDetail, animated: true)
             table.deselectRow(at: indexPath, animated: true)
         }
     }

@@ -27,9 +27,17 @@ class BattlesViewController: UIViewController {
         /// Registramos en nuestra tabla el tipo de celda que acepta
         let nib = UINib.init(nibName: String(describing: BattleTableViewCell.self), bundle: nil)
         table.register(nib, forCellReuseIdentifier: String(describing: BattleTableViewCell.self))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        /// Cargamos nuestra [Battles] mediante nuestra clase DataProvider
+        let userDefaults: UserDefaultsProvider = UserDefaultsProvider()
+        userDefaults.saveUserView(view: 1)
+        
+        /// Cargamos nuestra [Battles] mediante nuestra clase DataProvider al aparecer la vista
         battles = dataProvider.loadBattles(characterID: nil)
+        table.reloadData()
     }
     
     
@@ -38,7 +46,6 @@ class BattlesViewController: UIViewController {
     @IBAction func addBattleTapped(_ sender: Any) {
         /// Inicializacmos un UINavigationController con la UIView que se va a mostrar y se presenta
         let newBattle: NewBattleViewController = NewBattleViewController()
-        newBattle.delegate = self
         let navigationController: UINavigationController = UINavigationController.init(rootViewController: newBattle)
         navigationController.modalPresentationStyle = UIDevice.current.userInterfaceIdiom == .pad ? .formSheet : .fullScreen
         self.present(navigationController, animated: true, completion: nil)
@@ -48,14 +55,7 @@ class BattlesViewController: UIViewController {
 
 // MARK: UITableView Delegate
 
-extension BattlesViewController: UITableViewDelegate, NewBattleViewControllerDelegate {
-    /// Funcion delegada del protocolo de la ventana de nueva batalla para recargar la tabla
-    func reloadBattlesTable() {
-        /// Cargamos nuestras [Battles] mediante nuestra clase DataProvider tras añadir la nueva
-        battles = dataProvider.loadBattles(characterID: nil)
-        table.reloadData()
-    }
-    
+extension BattlesViewController: UITableViewDelegate {
     /// Funcion delegada de UITableViewDelegate para altura de celda
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
@@ -63,7 +63,9 @@ extension BattlesViewController: UITableViewDelegate, NewBattleViewControllerDel
     
     /// Funcion delegada de UITableViewDelegate para seleccion de celda
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /// TODO
+        let battleDetail: BattleDetailViewController = BattleDetailViewController.init(battle: battles[indexPath.row])
+        self.navigationController?.pushViewController(battleDetail, animated: true)
+        table.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -45,14 +45,19 @@ class VillainsViewController: UIViewController {
         /// Cargamos nuestra [Villains] mediante nuestra clase DataProvider
         villains = dataProvider.loadVillains(villainID: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let userDefaults: UserDefaultsProvider = UserDefaultsProvider()
+        userDefaults.saveUserView(view: 2)
+    }
 }
 
 
 // MARK: UITableView Delegate
 
-extension VillainsViewController: UITableViewDelegate, CharacterDetailViewControllerDelegate {
+extension VillainsViewController: UITableViewDelegate, CharacterPowerChangeDelegate {
     /// Funcion delegada del protocolo de la ventana de detalle para que recarguemos la lista tras un cambio de poder
-    func reloadCharactersTable() {
+    func reloadAfterPowerChange() {
         table.reloadData()
     }
     
@@ -70,9 +75,9 @@ extension VillainsViewController: UITableViewDelegate, CharacterDetailViewContro
             
         } else {
             /// Cuando se usa el UIView para acceder al detalle de un personaje lanzamos la vista de detalle
-            let villain: CharacterDetailViewController = CharacterDetailViewController.init(character: villains[indexPath.row])
-            villain.delegate = self
-            self.navigationController?.pushViewController(villain, animated: true)
+            let villainDetail: CharacterDetailViewController = CharacterDetailViewController.init(character: villains[indexPath.row])
+            villainDetail.delegate = self
+            self.navigationController?.pushViewController(villainDetail, animated: true)
             table.deselectRow(at: indexPath, animated: true)
         }
     }

@@ -36,6 +36,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.90196078431372551" green="0.94117647058823528" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" red="0.37947174" green="0.4803367824" blue="0.6886536593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5nZ-hy-yxA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="90D-aC-1UC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5nZ-hy-yxA" secondAttribute="trailing" id="EA7-AV-G1Q"/>

@@ -15,6 +15,7 @@ class BattleTableViewCell: UITableViewCell {
     
     private let caBattle: String = "Battle"
     
+    
     // MARK: - Lifecycle methods
     
     /// Se llama solo la primera vez que se crean las celdas
@@ -36,6 +37,9 @@ class BattleTableViewCell: UITableViewCell {
         villainAvatar.image = nil
     }
     
+    
+    // MARK: Functions
+
     /// Configuracion grafica de la celda
     func configureCell(battle: Battles) {
         battleName.text = "\(caBattle) \(battle.battleID)"
