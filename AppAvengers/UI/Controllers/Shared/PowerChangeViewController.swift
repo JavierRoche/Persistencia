@@ -28,7 +28,7 @@ class PowerChangeViewController: UIViewController {
     private var hero: Heroes?
     private var villain: Villains?
     /// El DataProvider para acceder a la clase que abstrae de la BBDD
-    private var dataProvider = DataProvider()
+    private var dataProvider: DataProvider = DataProvider()
     /// El delegado para poder llamar al protocolo y que se actualize la ventana de detalle y se recargue la lista
     weak var delegate: PowerChangedDelegate?
     

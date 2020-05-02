@@ -30,9 +30,6 @@ class NewBattleViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction func runBattleTapped(_ sender: Any) {
-        /// Creamos la nueva batalla en BBDD
-        let battle: Battles? = dataProvider.createBattle()
-        
         /// Accedemos a UserDefaults a por el numero de batalla y obtenemos el vencedor
         let userDefaults: UserDefaultsProvider = UserDefaultsProvider()
         guard let battleID = userDefaults.loadBattleNumber(),
@@ -42,6 +39,9 @@ class NewBattleViewController: UIViewController {
             self.showAlert(title: "Warning", message: "Select figthers")
             return
         }
+        
+        /// Creamos la nueva batalla en BBDD
+        let battle: Battles? = dataProvider.createBattle()
         
         /// Asignamos los valores obtenidos para la batalla
         battle?.battleID = Int16(battleID)
